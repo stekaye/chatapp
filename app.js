@@ -2,11 +2,6 @@ let delayInMilliseconds = 3000; //1 second
 let today = new Date();
 let time = today.getHours() + "." + (today.getMinutes() <10? '0': '') + today.getMinutes()
 
-// function writingToggle() {
-//   let waiting = document.querySelector('.typing')
-//   waiting.classList.toggle('disappear');
-// }
-
 // *****************************************************
 // REMOVE ANY ITEM FROM THE DOM
 // *****************************************************
@@ -101,12 +96,13 @@ addItemInput.addEventListener('keypress', function(evt) {
 // *****************************************************
 
 const clickSubmit = document.querySelector('.chat');
+const userText = document.querySelector('#addText');
 
 clickSubmit.addEventListener('click', function(evt) {
 
     evt.preventDefault();
 
-    const userNewText = evt.value;
+    const userNewText = userText.value;
 
     if (userNewText) {
       addMessageOut(userNewText);
