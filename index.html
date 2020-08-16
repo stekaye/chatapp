@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciao-Miao Messenger</title>
+
+  <!-- Stylesheet Links -->
+  <link rel="stylesheet" href="css/styles.css"> 
+
+  <!-- Font Links -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800&family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="/fonts/fontawesome-free-5.12.1-web/css/all.css" rel="stylesheet">
+
+  <!-- Favicon Links -->
+  <link rel="shortcut icon" type="image/png" href="img/cat_circle.png">
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <div class="header-box">
+      <div class="header-box__text">
+        <h1>Ciao-Miao Messenger</h1>
+      </div>
+      <div class="header-box__logo">
+        <img src="/img/cat_transparent.png" alt="Ciao-Miao Messenger Logo">
+      </div>
+    </div>
+
+  </header>
+
+  <main class="chat-section">
+
+    <div class="chat-section__left">
+
+      <div class="chat-section__left--form">
+        <input type="text" placeholder="Search chat history...">
+        <i class="fas fa-search icon-search"></i>
+      </div>
+
+      <div class="chat-section__left--messages">
+        <ul class="chat-section__left--messages-list">
+          
+          <li class="chat-user" id="User_1">
+            <div class="chat-user__image chat-user__image--1"><div class="status on"></div></div>
+            <div class="chat-user__info">
+              <div class="chat-user__info--top">
+                <div class="chat-user__info--user">Puss in Boots</div>
+                <div class="chat-user__info--time">Hoy 08.31</div>
+              </div>
+                <div class="chat-user__info--message">Hola!</div>
+            </div>
+          </li>
+
+          <li class="chat-user">
+            <div class="chat-user__image chat-user__image--2"><div class="status on"></div></div>
+            <div class="chat-user__info">
+              <div class="chat-user__info--top">
+                <div class="chat-user__info--user">Garfield</div>
+                <div class="chat-user__info--time">Hoy 08.18</div>
+              </div>
+                <div class="chat-user__info--message">Sigh...</div>
+            </div>
+          </li>
+
+          <li class="chat-user">
+            <div class="chat-user__image chat-user__image--3"><div class="status away"></div></div>
+            <div class="chat-user__info">
+              <div class="chat-user__info--top">
+                <div class="chat-user__info--user">Top Cat</div>
+                <div class="chat-user__info--time">Ayer 19.15</div>
+              </div>
+                <div class="chat-user__info--message">Can Benny come too?</div>
+            </div>
+          </li>
+
+          <li class="chat-user">
+            <div class="chat-user__image chat-user__image--4"><div class="status away"></div></div>
+            <div class="chat-user__info">
+              <div class="chat-user__info--top">
+                <div class="chat-user__info--user">Salem</div>
+                <div class="chat-user__info--time">Ayer 15.32</div>
+              </div>
+                <div class="chat-user__info--message">Still want to take over the world?</div>
+            </div>
+          </li>
+
+          <li class="chat-user">
+            <div class="chat-user__image chat-user__image--5"><div class="status on"></div></div>
+            <div class="chat-user__info">
+              <div class="chat-user__info--top">
+                <div class="chat-user__info--user">CC</div>
+                <div class="chat-user__info--time">Ayer 1321</div>
+              </div>
+                <div class="chat-user__info--message">&#x1F601 &#x1F601 &#x1F601</div>
+            </div>
+          </li>
+
+          <li class="chat-user">
+            <div class="chat-user__image chat-user__image--6"><div class="status on"></div></div>
+            <div class="chat-user__info">
+              <div class="chat-user__info--top">
+                <div class="chat-user__info--user">Grampa Tom</div>
+                <div class="chat-user__info--time">Ayer 1100</div>
+              </div>
+                <div class="chat-user__info--message">What does the semi colon and parenthesis mean after ok?</div>
+            </div>
+          </li>
+
+          <li class="chat-user">
+            <div class="chat-user__image chat-user__image--7"><div class="status off"></div></div>
+            <div class="chat-user__info">
+              <div class="chat-user__info--top">
+                <div class="chat-user__info--user">Annie</div>
+                <div class="chat-user__info--time">Fri 1831</div>
+              </div>
+                <div class="chat-user__info--message">Sorry you're really not my type.</div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      
+
+
+
+    </div>
+
+    <div class="chat-section__right">
+      
+      <div class="top-section">
+        <div class="chat-user__image chat-user__image--1"><div class="status on"></div></div>
+          <div class="chat-user__info">
+            <div class="chat-user__info--top">
+              <div class="chat-user__info--user">Puss in Boots</div>
+              <div class="call-buttons">
+                <i class="icon-call fas fa-video"></i>
+                <i class="icon-call fas fa-phone-square"></i>
+                <i class="icon-call fas fa-address-card"></i>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="live-chat">
+        <div class= "live-chat__box" id="current-chat">
+          
+          <!-- <div class="outgoing">
+            <div class="bubble">I was just sniffing some shoes and thought of you...<div class="bubble-time">Sun 11.12</div></div>
+            <div class="bubble">Fancy hunting some insects?<div class="bubble-time">Sun 11.13</div></div>
+          </div> -->
+
+          <div class="incoming">
+            <div class="bubble">Hola!<div class="bubble-time">Hoy 08.31</div><div class="chat-user__image chat-user__image--1"></div></div>
+          </div>
+
+          <div class="typing">
+            <div class="bubble">
+              <div class="dot-pulse"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="bottom-bar">
+        <form class="chat">
+          <input class="typeMessage" id="addText" type="text" placeholder="Type a message..." />
+          <button type="submit"><i class="submit fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+
+    </div>
+
+  </main>
+  
+
+  <footer class="footer">
+    <a href='https://www.freepik.com/vectors/cartoon'>Cat logo created created by freepik - www.freepik.com</a>
+  </footer>
+
+  <script src="app.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>
+
