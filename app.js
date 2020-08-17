@@ -219,6 +219,6 @@ const scrollDown = () => {
 $('.copyright').html("Copyright Stephen Kaye @ " + year + ".")
 
 
-setTimeout(addMessage, 6000);
+setTimeout(addMessage, 4000);
 
 
