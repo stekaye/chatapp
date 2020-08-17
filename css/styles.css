@@ -26,6 +26,7 @@ body {
   line-height: 1.6;
   padding: 30px;
   position: relative;
+  overflow: hidden;
 }
 
 a {
@@ -680,6 +681,7 @@ input::placeholder {
 
 @media (max-width: 600px)  {
 
+
   .header {
     height: 8vh;
   }
@@ -831,6 +833,10 @@ input::placeholder {
     margin: 0 .5rem;
   }
 
+  .live-chat {
+    height: 35vh;
+  }
+
   .live-chat__box {
     display: flex;
     flex-direction: column;
@@ -863,6 +869,15 @@ input::placeholder {
   }
   
   .chat button {
+    font-size: 1.2rem;
+  }
+
+  .chat input {
+    font-size: 1.2rem;
+  }
+
+  .chat input::placeholder {
+    color: rgb(6, 118, 142);
     font-size: 1.2rem;
   }
   
