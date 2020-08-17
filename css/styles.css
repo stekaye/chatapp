@@ -695,15 +695,16 @@ input::placeholder {
 
   .chat-section {
     flex-direction: column;
+    width: 80vw;
   }
 
   .chat-section__left--form {
-    margin: 1rem;
+    margin: 1rem 1rem 0;
     padding: 0;
   }
   
   .chat-section__left {
-    flex: 0 0 12rem;
+    flex: 0 0 11rem;
     margin: 1%;
   }
 
@@ -727,7 +728,8 @@ input::placeholder {
 
   .chat-user {
     flex-direction: column;
-    padding: .5rem;
+    padding: .3rem;
+    margin: 0;
   }
 
   .chat-user__image {
@@ -780,11 +782,11 @@ input::placeholder {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: left;
-    margin: 1rem;
+    margin: .6rem 1rem 1rem;
   }
   
   .chat-section__right {
-    flex: 0 0 58vh;
+    flex: 0 0 56vh;
     flex-direction: column;
     margin: 1%;
   }
