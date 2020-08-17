@@ -212,6 +212,10 @@ const scrollDown = () => {
 
 }
 
+// *****************************************************
+// KEEP COPYRIGHT UPDATED WITH CURRENT YEAR
+// *****************************************************
+
 $('.copyright').html("Copyright Stephen Kaye @ " + year + ".")
 
 
