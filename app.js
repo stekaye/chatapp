@@ -1,15 +1,15 @@
 let delayInMilliseconds = 3000; //1 second
 let today = new Date();
 let time = today.getHours() + "." + (today.getMinutes() <10? '0': '') + today.getMinutes()
+let year = today.getFullYear();
 
 // *****************************************************
 // REMOVE ANY ITEM FROM THE DOM
 // *****************************************************
 
-const removeItem = (parent, item) => {
-  let parentItem = document.querySelector(parent);
-  let deleteMe = document.querySelector(item);
-  parentItem.removeChild(deleteMe);
+const removeItem = (item) => {
+  let deleteMe = $(item);
+  $(deleteMe).remove();
 }
 
 // *****************************************************
@@ -18,28 +18,27 @@ const removeItem = (parent, item) => {
 
 const addMessage = (message="You want chicken of fish tonight?") => {
 
-  const chatBox = document.querySelector('#current-chat');
   let newIncoming = document.createElement('div');
-  newIncoming.classList.add('incoming');
-  chatBox.appendChild(newIncoming);
+  $(newIncoming).addClass('incoming');
+  $('#current-chat').append(newIncoming);
   
   let newBubble = document.createElement('div');
-  newBubble.classList.add('bubble');
+  $(newBubble).addClass('bubble');
   let newText = `${message}`;
-  newBubble.innerHTML = newText;
-  newIncoming.appendChild(newBubble);
+  $(newBubble).text(newText);
+  $(newIncoming).append(newBubble);
   
   let newTime = document.createElement('div');
-  newTime.classList.add('bubble-time');
+  $(newTime).addClass('bubble-time');
   let messageTime = `Hoy ${time}`;
-  newTime.innerHTML = messageTime;
+  $(newTime).html(messageTime);
   
   let addPhoto = document.createElement('div');
-  addPhoto.classList.add('chat-user__image');
-  addPhoto.classList.add('chat-user__image--1');
+  $(addPhoto).addClass('chat-user__image');
+  $(addPhoto).addClass('chat-user__image--1');
   
-  removeItem("#current-chat", ".typing");
-  newBubble.appendChild(newTime).appendChild(addPhoto);
+  removeItem(".typing");
+  $(newBubble).append(newTime, addPhoto);
   updateHistory(newText, messageTime);
 }
 
@@ -50,21 +49,17 @@ const addMessage = (message="You want chicken of fish tonight?") => {
 
 const addMessageOut = (message) => {
 
-  const chatBox = document.querySelector('#current-chat');
-
   const newIncomingDiv = document.createElement('div');
-  newIncomingDiv.classList.add('outgoing');
-  chatBox.appendChild(newIncomingDiv);
+  $(newIncomingDiv).addClass('outgoing')
+  $('#current-chat').append(newIncomingDiv)
 
   const newIncomingBubble = document.createElement('div');
-  newIncomingBubble.classList.add('bubble')
-  newIncomingBubble.innerHTML = `<span class="userText">${message}</span`;
-  newIncomingDiv.appendChild(newIncomingBubble);
+  $(newIncomingBubble).addClass('bubble').html(`<span class="userText">${message}</span`);
+  $(newIncomingDiv).append(newIncomingBubble);
 
   const newTime = document.createElement('div');
-  newTime.classList.add('bubble-time');
-  newTime.innerText = `Hoy ${time}`;
-  newIncomingBubble.appendChild(newTime)
+  $(newTime).addClass('bubble-time').text(`Hoy ${time}`)
+  $(newIncomingBubble).append(newTime);
 
 }
 
@@ -72,41 +67,36 @@ const addMessageOut = (message) => {
 // WHEN USER PRESSES RETURN, ADD TEXT TO CONVERSATION
 // *****************************************************
 
-const addItemInput = document.querySelector('#addText');
-
-addItemInput.addEventListener('keypress', function(evt) {
-
-  // evt.preventDefault();
+  $('#addText').on('keypress', function(evt) {
   
-  if (evt.key === 'Enter') {
-    
-    const userNewText = this.value;
+    if (evt.which === 13) {
+      
+      const userNewText = $(this).val();
 
-    if (userNewText) {
-      addMessageOut(userNewText);
-      this.value = '';
-      addTyping();
-      setTimeout(respond, 6000);
-    } 
-  }
-})
+      if (userNewText) {
+        scrollDown();
+        addMessageOut(userNewText);
+        $(this).val('');
+        addTyping();
+        setTimeout(respond, 6000);
+      } 
+    }
+  })
 
 // *****************************************************
 // WHEN USER CLICKS SUBMIT, ADD TEXT TO CONVERSATION
 // *****************************************************
 
-const clickSubmit = document.querySelector('.chat');
-const userText = document.querySelector('#addText');
-
-clickSubmit.addEventListener('click', function(evt) {
+$('.chat').on('click', function(evt) {
 
     evt.preventDefault();
 
-    const userNewText = userText.value;
+    const userNewText = $('#addText').val();
 
     if (userNewText) {
+      scrollDown();
       addMessageOut(userNewText);
-      this.value = '';
+      $('#addText').val('')
       addTyping();
       setTimeout(respond, 6000);
     } 
@@ -117,19 +107,19 @@ clickSubmit.addEventListener('click', function(evt) {
 // *****************************************************
 
 const addTyping = () => {
-  const chatBox = document.querySelector('#current-chat');
   
   const newTypingEffect = document.createElement('div');
-  newTypingEffect.classList.add('typing');
-  chatBox.appendChild(newTypingEffect);
+  $(newTypingEffect).addClass('typing');
+  $('#current-chat').append(newTypingEffect);
 
   const effectContainer = document.createElement('div');
-  effectContainer.classList.add('bubble');
-  newTypingEffect.appendChild(effectContainer);
+  $(effectContainer).addClass('bubble');
+  $(newTypingEffect).append(effectContainer);
 
   const effect = document.createElement('div');
-  effect.classList.add('dot-pulse');
-  effectContainer.appendChild(effect);
+  $(effect).addClass('dot-pulse');
+  $(effectContainer).append(effect);
+
 }
 
 // *****************************************************
@@ -138,15 +128,16 @@ const addTyping = () => {
 
 const respond = () => {
 
-  const normalResponses = ['Nice!', 'Cool!', 'Purrrrfext', 'Wicked!', 'Okay', 'Legend!', `&#128512`, `&#129409`, `&#270A`, `&#128513`, `&#128514`, `&#128515`, `&#128568`, `&#128571`, `&#128570`, `$#128572`];
-  const questionResponses = ['Yeah!', 'No way!', 'Hmmm maybe', 'Purrrrrhaps', 'What do you think?', 'Definitely!', `&#128049`, `&#128050`, `&#128078`, `&#128169`, `&#128576`, `&#128573`, `&#128591`, `&#129300`, `&#129324`, `&#129505`]
-  const randomIndex = Math.floor(Math.random() * normalResponses.length)
+  const normalResponses = ['Nice!', 'Cool!', 'Purrrrfect', 'Wicked!', 'Sweeet', 'Legend!', '\u{1F600}', '\u{1F981}', '\u{270A}', '\u{1F601}', '\u{1F602}', '\u{1F603}', '\u{1F638}', '\u{1F63B}', '\u{1F63A}', '\u{1F63C}']
   
-  const outgoingText = document.querySelectorAll('.userText')
-  const lastMessage = outgoingText[outgoingText.length-1];
+  const questionResponses = ['Yeah!', 'No way!', 'Hmmm maybe', 'Purrrrrhaps', 'What do you think?', 'Definitely!', , '\u{1F431}', '\u{1F432}', '\u{1F44E}', '\u{1F4A9}', '\u{1F640}', '\u{1F63D}', '\u{1F64F}', '\u{1F914}', '\u{1F92C}', '\u{1F9E1}']
+  
+  const randomIndex = Math.floor(Math.random() * normalResponses.length)
+  const lastMessage = $('.userText').last()
   const regex = new RegExp('!', 'g')
-  const lastMessageStr = lastMessage.innerText.toLowerCase().replace(regex, '');
+  const lastMessageStr = lastMessage.text().toLowerCase().replace(regex, '');
   const isolateLastLetter = lastMessageStr.split('').reverse().join('')[0];
+  
   let response;
   
   let responsePairs = {
@@ -194,7 +185,9 @@ const respond = () => {
     response = normalResponses[randomIndex];
   }
 
-  return addMessage(response);
+  scrollDown();
+  addMessage(response);
+
 }
 
 // *****************************************************
@@ -203,14 +196,23 @@ const respond = () => {
 
 const updateHistory = (message, time) => {
 
-  let latestMsgTime = document.querySelectorAll('.chat-user__info--time')[0];
-  let latestMsgText = document.querySelectorAll('.chat-user__info--message')[0];
-
-  latestMsgTime.innerText = time;
-  latestMsgText.innerText = message
+  $('.chat-user__info--time').first().text(time);
+  $('.chat-user__info--message').first().text(message);
 
 }
 
+// *****************************************************
+// KEEP SCROLL AT BOTTOM
+// *****************************************************
+
+const scrollDown = () => {
+
+  let window = document.querySelector(".live-chat");
+  window.scrollTop = window.scrollHeight - window.clientHeight;
+
+}
+
+$('.copyright').html("Copyright Stephen Kaye @ " + year + ".")
 
 
 setTimeout(addMessage, 6000);
