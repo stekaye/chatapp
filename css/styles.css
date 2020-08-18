@@ -20,7 +20,6 @@ body {
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat Alternates', sans-serif;
-  /* font-family: 'Rowdies', cursive; */
   font-weight: 400;
   height: 100vh;
   line-height: 1.6;
@@ -131,11 +130,11 @@ input::placeholder {
 /* edit Placeholder text */
 
 .icon-search {
+  color: rgba(6, 118, 142, 0.5);
   font-size: 2rem;
+  left: 9%;
   position: absolute;
   top: 50%;
-  left: 9%;
-  color: rgba(6, 118, 142, 0.5);
   transform: translate(-50%, -50%);
 }
 
@@ -239,7 +238,6 @@ input::placeholder {
   align-items: center;
   display: flex;
   flex-direction: row;
-  /* justify-content: stretch; */
   width: 100%;
 }
 
@@ -359,11 +357,11 @@ input::placeholder {
 
 .incoming .chat-user__image {
   height: 3rem;
-  width: 3rem;
-  position: absolute;
-  top: -1.2rem;
   left: -1.2rem;
   opacity: 1;
+  position: absolute;
+  top: -1.2rem;
+  width: 3rem;
   z-index: 1000;
 }
 
@@ -400,17 +398,12 @@ input::placeholder {
 
 .typing {
   align-self: flex-start;
-  /* display: flex;
-  flex: 1;
-  flex-direction: column; */
-  /* visibility: hidden; */
 }
 
 /* $$$$$$$$ DOT PULSE ANIMATION $$$$$$$$ */
 
 .dot-pulse {
   /* display: none; */
-  position: relative;
   background-color: rgb(6, 118, 142);
   border-radius: 5px;
   box-shadow: 9999px 0 0 -5px rgb(6, 118, 142);
@@ -418,6 +411,7 @@ input::placeholder {
   height: 5px;
   left: -9999px;
   margin-left: 2rem;
+  position: relative;
   width: 5px;
 
   animation: dotPulse 1.5s infinite linear;
@@ -530,9 +524,9 @@ input::placeholder {
   border: 0;
   color: rgba(6, 118, 142, .8);
   cursor: pointer;
-  position: absolute;
   font-size: 2rem;
   outline: 0;
+  position: absolute;
   right: 2rem;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -560,8 +554,11 @@ input::placeholder {
 }
 
 
+/* *****************************************************
+MEDIA QUERIES
+***************************************************** */
 
-
+/* **************** MAX WIDTH 1200PX **************** */
 
 @media (max-width: 1200px)  {
 
@@ -591,6 +588,8 @@ input::placeholder {
   }
 }
 
+/* **************** MAX WIDTH 1000PX **************** */
+
 @media (max-width: 1000px)  {
 
   .icon-search {
@@ -610,6 +609,8 @@ input::placeholder {
   }
 
 }
+
+/* **************** MAX WIDTH 800PX **************** */
 
 @media (max-width: 800px)  {
 
@@ -646,6 +647,8 @@ input::placeholder {
   }
 }
 
+/* **************** MAX WIDTH 700PX **************** */
+
 @media (max-width: 700px)  {
 
   .chat-user__image {
@@ -679,8 +682,9 @@ input::placeholder {
   }
 }
 
-@media (max-width: 600px)  {
+/* **************** MAX WIDTH 600PX **************** */
 
+@media (max-width: 600px)  {
 
   .header {
     height: 8vh;
@@ -847,9 +851,9 @@ input::placeholder {
   
   .incoming .chat-user__image {
     height: 2rem;
-    width: 2rem;
-    top: -1rem;
     left: -.6rem;
+    top: -1rem;
+    width: 2rem;
   }
   
   .bubble {
@@ -872,6 +876,10 @@ input::placeholder {
     font-size: 1.2rem;
   }
 
+  .chat button:hover {
+    font-size: 1.2rem;
+  }
+
   .chat input {
     font-size: 1.2rem;
   }
@@ -880,7 +888,7 @@ input::placeholder {
     color: rgb(6, 118, 142);
     font-size: 1.2rem;
   }
-  
+
   .footer {
     font-size: .7rem;
   }
