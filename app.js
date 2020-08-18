@@ -16,7 +16,7 @@ const removeItem = (item) => {
 // ADD INCOMING MESSAGE
 // *****************************************************
 
-const addMessage = (message="You want chicken of fish tonight?") => {
+const addMessage = (message="Well you need to answer three questions first. One word answers only please! You ready?") => {
 
   let newIncoming = document.createElement('div');
   $(newIncoming).addClass('incoming');
@@ -141,40 +141,54 @@ const respond = () => {
   let response;
   
   let responsePairs = {
+    'yes'       : "Okay question one... It's 3pm, are you hunting or sleeping?",
+    'yes sir'   : "Okay question one... It's 3pm, are you hunting or sleeping?",
+    'ready'     : "Okay question one... It's 3pm, are you hunting or sleeping?",
+    "i'm ready" : "Okay question one... It's 3pm, are you hunting or sleeping?",
+    'no'        : "Well that's too bad! Question one... It's 3pm, are you hunting or sleeping?",
+    'sleeping'  : "Excellent, napping is an important part of pusskateer culture. Question two...donkeys: friend or foe?",
+    'hunting'   : "A warrior, I like it! We need someone to hunt while the elders nap. Question two... donkeys: friend or foe?",
+    'friend'    : "Correct! They may smell bad but they have proven to be staunch allies. Last question... What is your weapon of choice: sword or paws?",
+    'foe'       : "I thought that at first, but you must learn to work with them. Last question... What is your weapon of choice: sword or paws?",
+    'sword'     : "Excellent. I have long been searching for a worthy sparring purrrtner! Congratulations, you are in! I will see you tomorrow at 9am sharp",
+    'paws'      : "A pawrate master? Fantastico! Congratulations, you are in! I will see you tomorrow at 9am sharp",
+    'where?'    : "You know where!",
+    'do i?'     : "Yes!",
+    "no i don't": "Then perhaps you are not the one we are looking for.",
+    "i don't"   : "Then perhaps you are not the one we are looking for.",
+    'ok'        : "Genial!",
+    'okay'      : "Genial!",
     'what?'     : "You heard me!",
     'huh?'      : "What don't you understand?",
     '?'         : "What?",
     '??'        : "What?",
     '???'       : "What?",
-    'chicken'   : "Good choice! What time are you coming round?",
-    'chicken?'   : "Good choice! What time are you coming round?",
-    'fish'      : "Awesome. I've got some stored under the bed. What time are you coming round?",
-    'fish?'      : "Awesome. I've got some stored under the bed. What time are you coming round?",
-    'ham'       : "Sorry, i'm out! I think I have some spam. Would that work?",
-    'beef'      : "Urrrgh disgusting!",
-    'donkey'    : "What... no Shrek would kill me!",
-    'hummous'   : "Okay your majesty",
-    'no'        : "sigh",
-    'no way'    : "sigh",
-    'neither'   : "Typical",
+    'neither'   : "Indecision is not an option, compadre. Pick an answer!",
     'bye'       : "Adios!",
     'goodbye'   : "Adios!",
     'adios'     : "Adios!",
     'see ya'    : "Adios!",
     'see you'   : "Adios!",
-    'thanks'    : "No worries!",
-    'thank you' : "No worries!",
+    'ciao'      : "Hasta mañana!",
+    'amazing'   : "Yes it is, isn't it.",
+    'awesome'   : "Why yes, I am.",
+    'excellent' : 'We shall see.',
+    'thanks'    : "You earned it kiddo!",
+    'thank you' : "It was my pleasure!",
     'miaow'     : "Purrrrrr",
     'miao'      : "Purrrrrr",
     'I love you': "Aww you charmer!",
     'love you'  : "Awww, eres la leche!",
     'love ya'   : "You're my catnip!",
     'love u'    : "You just love my boots!",
+    'nice pic'  : "Yes, I am gorgeous",
+    'nice picture': "Yes, I am gorgeous"
   }
 
   for (let response in responsePairs) {
     if (lastMessageStr === response) {
       response = responsePairs[response];
+      scrollDown();
       return addMessage(response);
     }
   }
